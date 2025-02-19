@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 # import models
 # import database
-from . import models
-from . import database
+import models
+import database
 
 def seed_data(db: Session):
     # test_places = [

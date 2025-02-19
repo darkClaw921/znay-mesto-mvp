@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from . import models, database
-from .work_bitrix import get_all_products, Catalog
+import models, database
+from work_bitrix import get_all_products, Catalog
 import asyncio
 from pprint import pprint
 catalog = Catalog()

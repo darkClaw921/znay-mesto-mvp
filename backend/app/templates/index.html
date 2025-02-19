@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Знаю место</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Знаю место</div>
+            <div class="menu">
+                <!-- <a href="#">Попутчики</a> -->
+                <a href="#">Туры</a>
+                <a href="#">О проекте</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div id="filters-button">Фильтры ▼</div>
+        <div id="filters-panel" class="hidden">
+            <div class="filters-header">
+                <h3>Фильтры</h3>
+                <button class="clear-filters">Очистить</button>
+            </div>
+            <div class="filter-section">
+                <label>Вид тура</label>
+                <select id="type-filter">
+                    <option value="">Любой</option>
+                    <!-- Остальные опции будут добавлены динамически -->
+                </select>
+            </div>
+            <!-- <div class="filter-section">
+                <label>Дата начала</label>
+                <input type="date" id="start-date">
+            </div>
+            <div class="filter-section">
+                <label>Дата окончания</label>
+                <input type="date" id="end-date">
+            </div> -->
+            <!-- <div class="filter-note">
+                Дата начала поездки указывается автором ориентировочно и вероятно может измениться по обстоятельствам.
+            </div> -->
+            <button id="apply-filters">Показать результаты</button>
+        </div>
+
+        <div id="map"></div>
+        <div id="place-info" class="hidden">
+            <span class="close-btn">&times;</span>
+            <img id="place-image" src="" alt="">
+            <h2 id="place-name"></h2>
+            <div id="place-type"></div>
+            <p id="place-description"></p>
+            <div id="place-contacts"></div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта мест</title>
+    <link rel="stylesheet" href="/static/map-embed.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div id="filters-button">Фильтры ▼</div>
+    <div id="filters-panel" class="hidden">
+        <div class="filters-header">
+            <h3>Фильтры</h3>
+            <button class="clear-filters">Очистить</button>
+        </div>
+        <div class="filter-section">
+            <label>Поиск по описанию</label>
+            <input type="text" id="search-input" placeholder="Введите текст для поиска...">
+        </div>
+        <div class="filter-section">
+            <label>Вид тура</label>
+            <select id="type-filter">
+                <option value="">Любой</option>
+                <!-- Остальные опции будут добавлены динамически -->
+            </select>
+        </div>
+        <!-- <div class="filter-section">
+            <label>Дата начала</label>
+            <input type="date" id="start-date">
+        </div>
+        <div class="filter-section">
+            <label>Дата окончания</label>
+            <input type="date" id="end-date">
+        </div> -->
+        <div class="filter-note">
+            <!-- Дата начала поездки указывается автором ориентировочно и вероятно может измениться по обстоятельствам. -->
+        </div>
+        <button id="apply-filters">Показать результаты</button>
+    </div>
+
+    <div id="map"></div>
+    <div id="place-info" class="hidden">
+        <span class="close-btn">&times;</span>
+        <img id="place-image" src="" alt="">
+        <h2 id="place-name"></h2>
+        <div id="place-type"></div>
+        <p id="place-description"></p>
+        <div id="place-contacts"></div>
+        <a id="place-link" href="#" target="_blank" class="bitrix-link">Подробнее</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="/static/map-embed.js"></script>
+</body>
+</html> 

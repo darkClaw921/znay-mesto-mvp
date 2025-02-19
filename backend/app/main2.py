@@ -100,4 +100,8 @@ def get_place_types(db: Session = Depends(get_db)):
     return JSONResponse(
         content=type_list,
         headers={"Content-Type": "application/json; charset=utf-8"}
-    ) 
+    )
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

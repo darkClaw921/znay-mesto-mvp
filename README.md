@@ -10,7 +10,7 @@
 
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
-
+poetry run uvicorn app.main2:app --reload    
 для вставки на сайт:
 https://5a35-2605-e440-2-00-2-1d4.ngrok-free.app/embed
 

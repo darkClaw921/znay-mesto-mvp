@@ -4,10 +4,10 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
-from . import models, schemas, database
+import models, schemas, database
 from typing import List
-from .seed_data import seed_data
-from .sync_bitrix import sync_places_from_bitrix
+from seed_data import seed_data
+from sync_bitrix import sync_places_from_bitrix
 import os
 
 app = FastAPI()

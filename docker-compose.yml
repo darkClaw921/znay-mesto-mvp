@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.backend.rule=Host(`api.fruquosijek.beget.app`)
+      - traefik.http.routers.backend.tls=true
+      - traefik.http.routers.backend.entrypoints=web,websecure
+      - traefik.http.routers.backend.tls.certresolver=mytlschallenge
+      - traefik.http.middlewares.backend.headers.SSLRedirect=true
+      - traefik.http.middlewares.backend.headers.STSSeconds=315360000
+      - traefik.http.middlewares.backend.headers.browserXSSFilter=true
+      - traefik.http.middlewares.backend.headers.contentTypeNosniff=true
+      - traefik.http.middlewares.backend.headers.forceSTSHeader=true
+      - traefik.http.middlewares.backend.headers.SSLHost=api.fruquosijek.beget.app
+      - traefik.http.middlewares.backend.headers.STSIncludeSubdomains=true
+      - traefik.http.middlewares.backend.headers.STSPreload=true
+      - traefik.http.routers.backend.middlewares=backend@docker
+    env_file: .env
+    depends_on:
+      - postgres
+      - redis 

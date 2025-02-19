@@ -1,0 +1,15 @@
+project_root/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── schemas.py
+│   │   ├── database.py
+│   │   └── seed_data.py
+│   ├── pyproject.toml
+│   └── poetry.lock
+└── frontend/
+    ├── index.html
+    ├── styles.css
+    └── script.js 

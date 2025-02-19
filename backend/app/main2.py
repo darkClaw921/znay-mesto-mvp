@@ -1,14 +1,16 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 import models, schemas, database
 from typing import List
 from seed_data import seed_data
 from sync_bitrix import sync_places_from_bitrix
 import os
+from pathlib import Path
 
 app = FastAPI()
 
@@ -22,12 +24,14 @@ app.add_middleware(
 )
 
 # Монтируем статические файлы
-frontend_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend")
-app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Настраиваем шаблоны
+templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
-async def read_root():
-    return FileResponse(os.path.join(frontend_path, "index.html"))
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 # Создание таблиц
 models.Base.metadata.create_all(bind=database.engine)
@@ -80,8 +84,8 @@ def read_place(place_id: int, db: Session = Depends(get_db)):
     return place
 
 @app.get("/embed")
-async def read_map_embed():
-    return FileResponse(os.path.join(frontend_path, "map.html"))
+async def read_map_embed(request: Request):
+    return templates.TemplateResponse("map.html", {"request": request})
 
 @app.post("/sync-bitrix/")
 async def sync_bitrix(db: Session = Depends(get_db)):
